@@ -1,29 +1,29 @@
 ## Octopus Energy Python challenge
 
 ### Scope
+Write a simple Python web scraper to help us visit the tide pools. 
+Go to https://www.tide-forecast.com/ to get tide forecasts for these locations:
+- Half Moon Bay, California
 
-OE needs to process so-called Electronic Data Interchange (EDI) files in order to
-communicate with the energy industry. These are pipe, tilde, and star delimited
-text files that are sent to and from us via a variety of different methods. Our
-systems then import each file into our database.
-There are lots of different types of EDI files but, for this project, we are only
-concerned with the EDI 867 files which contain information about meter readings
-gathered by field agents (that is, not submitted by customers).
-We need a new service that can import these files into a database
+- Huntington Beach, California
+
+- Providence, Rhode Island
+
+- Wrightsville Beach, North Carolina
+
+Load the tide forecast page for each location and extract information on low tides that occur after sunrise and before sunset. Return the time and height for each daylight low tide.
+In your response, be sure to include a URL where we can see the code and a description of how to run it (including installing dependencies, if needed).
 
 ### Requirements Documentation
 
-instructions/Python Developer Challenge - Siphon .pdf
-
+Email via Employer  
 ### Technical Constraints
-SQLite DB
-Linux / Mac Compatible  
-Python-Version matrix[3.6, 3.7]  
-#NOTE No Dataclasses in 3.6  
-Environment contraints are enusured with CICD pipeline. Will test parallel builds on ubuntu-latest.  
-Check .github/workflows/main.yml for build details.
+Python web scraper
 
-
+### Application outline
+- Simple python application to scrape and ingest data from provided URL into a sqlite DB for storage and future viewing.(SQLite for the provided demonstration for its light weight nature)
+- Makefile for environment setup and integration testing."Run" cmd included for ease of application use.
+- .github/workflows/main.yml file provided for simple CICD via github actions.
 ### Installation and Use
 
 - Create a virtualenv '~/project_folder/.venv'.

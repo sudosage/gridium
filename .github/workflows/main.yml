@@ -1,0 +1,35 @@
+name: Octopus Data Ingestion
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix:
+        python-version: [3.6, 3.7]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          make install
+      - name: Format code with black
+        run: |
+          make format  
+      - name: Typecheck with mypy
+        run: |
+          make typecheck                      
+      - name: Lint with pylint
+        run: |
+          make lint
+      - name: Test with pytest
+        run: |
+          make test
+      - name: Build Container
+        run: |
+          make build                      
+      - name: deploy container
+        run: |
+          make deploy          
